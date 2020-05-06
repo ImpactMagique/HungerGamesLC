@@ -1,0 +1,20 @@
+name: HungerGames
+version: 1.0
+author: Impact
+main: fr.impact.hungergames.HungerGames
+commands:
+  setBorderCenter:
+    description: Permet de set le centre de la bordure pour le HungerGames
+    usage: </setBorderCenter>
+  feast:
+    description: Permet de pointer la boussole vers le feast
+    usage: /feast
+  feed:
+    description: Permet de set la food au max
+    usage: /feed
+  setchestlocation:
+    description: Permet de set la location des chests pour le feast
+    usage: /setchestlocation
+  testchest:
+    description: Test chest
+    usage: /testchest

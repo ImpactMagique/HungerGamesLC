@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="HungerGames:jar">
+    <output-path>$USER_HOME$/Desktop/SPIGOT DOWNLOAD/network/servers/game/plugins</output-path>
+    <root id="archive" name="HungerGames.jar">
+      <element id="module-output" name="HungerGames" />
+    </root>
+  </artifact>
+</component>
