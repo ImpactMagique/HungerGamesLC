@@ -19,7 +19,7 @@ public class Disguise {
         disguise = d;
         player = p;
         Location location = Bukkit.getServer().getPlayer(p).getLocation();
-        switch(disguise) {
+        switch (disguise) {
             case ZOMBIE:
                 entity = getEntity("EntityZombie", p);
                 break;
@@ -63,11 +63,20 @@ public class Disguise {
             case SHEEP:
                 entity = getEntity("EntitySheep", p);
                 break;
+            case CHICKEN:
+                entity = getEntity("EntityChicken", p);
+                break;
+            case COW:
+                entity = getEntity("EntityCow", p);
+                break;
+            case PIG:
+                entity = getEntity("EntityPig", p);
+                break;
             case OCELOT:
                 entity = getEntity("EntityOcelot", p);
                 break;
         }
-        if(d != null) {
+        if (d != null) {
 
             ReflectionUtils.RefMethod m = entity.getMethod("setPosition", double.class, double.class, double.class);
             ReflectionUtils.RefMethod mm = entity.getMethod("d", int.class);
@@ -76,7 +85,6 @@ public class Disguise {
 
             m.of(thisObject).call(location.getX(), location.getY(), location.getZ());
             mm.of(thisObject).call(Bukkit.getServer().getPlayer(p).getEntityId());
-            mmm.of(thisObject).call(ChatColor.YELLOW + Bukkit.getServer().getPlayer(p).getName());
             mmmm.of(thisObject).call(true);
 
             ReflectionUtils.RefField rf = entity.getField("locX");
@@ -140,7 +148,7 @@ public class Disguise {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
 
-            if(player != getPlayer()) {
+            if (player != getPlayer()) {
                 Object handle = methodGetHandle.of(player).call();
                 Object connection = fieldPlayerConnection.of(handle).get();
 
@@ -187,7 +195,7 @@ public class Disguise {
         ReflectionUtils.RefMethod methodSendPacket = classPlayerConnection.findMethodByName("sendPacket");
 
         for (Player all : Bukkit.getOnlinePlayers()) {
-            if(all != Bukkit.getPlayer(player)) {
+            if (all != Bukkit.getPlayer(player)) {
                 Object handle = methodGetHandle.of(all).call();
                 Object connection = fieldPlayerConnection.of(handle).get();
 
@@ -211,7 +219,10 @@ public class Disguise {
         GHAST(Type.MOB),
         GIANT(Type.MOB),
         OCELOT(Type.MOB),
-        SHEEP(Type.MOB);
+        SHEEP(Type.MOB),
+        COW(Type.MOB),
+        PIG(Type.MOB),
+        CHICKEN(Type.MOB);
 
 
         private Type type;
@@ -225,7 +236,7 @@ public class Disguise {
         }
 
         public boolean isBiped() {
-            if(type == Type.BIPED) {
+            if (type == Type.BIPED) {
                 return true;
             }
             return false;

@@ -13,28 +13,22 @@ import org.bukkit.entity.Player;
 import java.io.IOException;
 
 
-public class BorderCenterLocation implements CommandExecutor
-{
+public class BorderCenterLocation implements CommandExecutor {
 
     private HungerGames main;
     public static Location locBorderCenter;
 
-    public BorderCenterLocation(HungerGames main)
-    {
+    public BorderCenterLocation(HungerGames main) {
         this.main = main;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
-    {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if(sender instanceof Player)
-        {
+        if (sender instanceof Player) {
             Player player = (Player) sender;
-            if(label.equalsIgnoreCase("setBorderCenter"))
-            {
-                if(args.length == 0)
-                {
+            if (label.equalsIgnoreCase("setBorderCenter")) {
+                if (args.length == 0) {
                     locBorderCenter = player.getLocation();
 
                     main.configuration.set(main.infos + ".borderCenterLocationX", locBorderCenter.getX());
@@ -51,18 +45,15 @@ public class BorderCenterLocation implements CommandExecutor
                         return false;
                     }
 
+                } else {
+                    return false;
                 }
-                else
-                    {
-                        return false;
-                    }
 
             }
         }
 
         return false;
     }
-
 
 
 }
